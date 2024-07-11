@@ -1,26 +1,181 @@
-html { font-family: sans-serif; background: #eee; padding: 1rem; }
-body { max-width: 960px; margin: 0 auto; background: white; }
-h1 { font-family: serif; color: #377ba8; margin: 1rem 0; }
-a { color: #377ba8; }
-hr { border: none; border-top: 1px solid lightgray; }
-nav { background: lightgray; display: flex; align-items: center; padding: 0 0.5rem; }
-nav h1 { flex: auto; margin: 0; }
-nav h1 a { text-decoration: none; padding: 0.25rem 0.5rem; }
-nav ul  { display: flex; list-style: none; margin: 0; padding: 0; }
-nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
-.content { padding: 0 1rem 1rem; }
-.content > header { border-bottom: 1px solid lightgray; display: flex; align-items: flex-end; }
-.content > header h1 { flex: auto; margin: 1rem 0 0.25rem 0; }
-.flash { margin: 1em 0; padding: 1em; background: #cae6f6; border: 1px solid #377ba8; }
-.post > header { display: flex; align-items: flex-end; font-size: 0.85em; }
-.post > header > div:first-of-type { flex: auto; }
-.post > header h1 { font-size: 1.5em; margin-bottom: 0; }
-.post .about { color: slategray; font-style: italic; }
-.post .body { white-space: pre-line; }
-.content:last-child { margin-bottom: 0; }
-.content form { margin: 1em 0; display: flex; flex-direction: column; }
-.content label { font-weight: bold; margin-bottom: 0.5em; }
-.content input, .content textarea { margin-bottom: 1em; }
-.content textarea { min-height: 12em; resize: vertical; }
-input.danger { color: #cc2f2e; }
-input[type=submit] { align-self: start; min-width: 10em; }
+
+:root {
+    --primary-color: #4CAF50; /* Verde */
+    --secondary-color: #2196F3; /* Azul */
+    --background-color: #f0f0f0; /* Cinza claro */
+    --text-color: #333; /* Cinza escuro */
+    --accent-color: #FFC107; /* Amarelo */
+  }
+  
+  /* Estilos */
+  html {
+    font-family: 'Roboto', sans-serif;
+    background: var(--background-color);
+    padding: 1rem;
+  }
+  
+  body {
+    max-width: 960px;
+    margin: 0 auto;
+    background: white;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    margin: 1rem 0;
+  }
+  
+  a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: var(--accent-color);
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+  }
+  
+  nav {
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  nav h1 {
+    flex: 1;
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+  }
+  
+  nav h1 a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li a {
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    background-color: var(--accent-color);
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+  
+  .content > header {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .content > header h1 {
+    flex: 1;
+    margin: 1rem 0 0.5rem 0;
+  }
+  
+  .flash {
+    margin: 1em 0;
+    padding: 1em;
+    background: var(--accent-color);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+  }
+  
+  .post > header {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: var(--secondary-color);
+  }
+  
+  .post > header > div:first-of-type {
+    flex: 1;
+  }
+  
+  .post > header h1 {
+    font-size: 1.8em;
+    margin-bottom: 0;
+    color: var(--primary-color);
+  }
+  
+  .post .about {
+    color: var(--text-color);
+    font-style: italic;
+  }
+  
+  .post .body {
+    white-space: pre-line;
+  }
+  
+  .content:last-child {
+    margin-bottom: 0;
+  }
+  
+  .content form {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+  
+  .content input,
+  .content textarea {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .content textarea {
+    min-height: 12em;
+    resize: vertical;
+  }
+  
+  input.danger {
+    color: #cc2f2e;
+  }
+  
+  input[type=submit] {
+    align-self: flex-start;
+    min-width: 10em;
+    padding: 0.75em;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  input[type=submit]:hover {
+    background-color: var(--accent-color);
+  }
+  
