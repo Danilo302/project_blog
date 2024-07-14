@@ -1,7 +1,8 @@
 import os
-from flask import Flask , url_for, render_template
+from flask import Flask , url_for, render_template, redirect
 from database.db import init_app, init_db
 from routes.auth import bp
+from routes.blog import bp_blog
 
 def create_app():
     app = Flask(__name__,instance_relative_config=True)
@@ -10,11 +11,14 @@ def create_app():
         DATABASE=os.path.join(os.getcwd(), 'flaskr.sqlite'),
     )
 
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    # @app.route('/')
+    # def hello():
+    #     return redirect(url_for("auth.login"))
 
     init_app(app)
+    
+    app.register_blueprint(bp_blog)
+    app.add_url_rule('/',endpoint='index')
     
     
     return app
