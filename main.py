@@ -1,30 +1,26 @@
 import os
-from flask import Flask , url_for, render_template, redirect
-from database.db import init_app, init_db
-from routes.auth import bp
-from routes.blog import bp_blog
+from flask import Flask
+from database.db import init_app
 
 def create_app():
-    app = Flask(__name__,instance_relative_config=True)
+    app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY='dev',
-        DATABASE=os.path.join(os.getcwd(), 'flaskr.sqlite'),
+        SECRET_KEY=os.environ.get('SECRET_KEY', 'dev'),
+        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
 
-    # @app.route('/')
-    # def hello():
-    #     return redirect(url_for("auth.login"))
-
+    from database.db import init_app
     init_app(app)
     
-    app.register_blueprint(bp_blog)
-    app.add_url_rule('/',endpoint='index')
+    from routes.auth import bp as auth_bp
+    from routes.blog import bp_blog as blog_bp
     
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(blog_bp)
     
     return app
 
-    
+app = create_app()
+
 if __name__ == '__main__':
-    app = create_app()
-    app.register_blueprint(bp)
-    app.run(debug=True)
+    app.run()

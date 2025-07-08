@@ -1,4 +1,6 @@
-__pycache__
-
-flaskr.sqlite
-
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+instance/
+.env
