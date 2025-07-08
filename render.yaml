@@ -3,7 +3,7 @@ services:
     name: project-blog
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn main:create_app()
+    startCommand: gunicorn --worker-tmp-dir /dev/shm main:app 
     envVars:
       - key: FLASK_ENV
         value: production
